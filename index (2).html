@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สื่อการสอนแป้นพิมพ์ 8 ปุ่มสำคัญ - โรงเรียนอนุบาลกาญจนบุรี</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            background: linear-gradient(135deg, #e0f2fe 0%, #fef3c7 50%, #fce7f3 100%);
+            min-height: 100vh;
+        }
+        .key-btn {
+            transition: all 0.08s ease;
+            box-shadow: 0 4px 0 #1e293b;
+        }
+        .key-btn:active, .key-btn.active-key {
+            transform: translateY(4px);
+            box-shadow: 0 0 0 #1e293b;
+            background-color: #38bdf8 !important;
+            color: #0f172a !important;
+        }
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        .animate-float {
+            animation: float-slow 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-between p-3 md:p-6 text-slate-800">
+
+    <header class="w-full max-w-5xl bg-white/90 backdrop-blur-md rounded-2xl shadow-lg border-4 border-sky-300 p-4 mb-4 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+            <div class="bg-pink-500 text-white rounded-full p-3 font-bold text-xl shadow-md animate-float">⭐</div>
+            <div>
+                <span class="bg-pink-100 text-pink-600 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">สื่อการสอนคอมพิวเตอร์อินเตอร์แอคทีฟ</span>
+                <h1 class="text-2xl md:text-3xl font-extrabold text-indigo-700 mt-1">แป้นพิมพ์น่ารู้ (กดแป้นพิมพ์ของคุณได้เลย!)</h1>
+                <p class="text-xs md:text-sm text-slate-600 font-medium">
+                    ครูผู้สอน: <span class="text-indigo-600 font-bold">ครูหทัยรัตน์ มณฑาทัศน์</span> • โรงเรียนอนุบาลกาญจนบุรี
+                </p>
+            </div>
+        </div>
+        <div class="bg-sky-50 border-2 border-sky-200 rounded-xl p-3 text-xs md:text-sm text-sky-900 w-full md:w-auto text-center md:text-left">
+            <span class="font-bold">💡 คำชี้แจง:</span> กดปุ่มบนคีย์บอร์ดจริงของคุณ หรือคลิกปุ่มบนหน้าจอเพื่อฟังสำเนียงอังกฤษและคำอธิบายภาษาไทย
+        </div>
+    </header>
+
+    <main class="w-full max-w-5xl bg-white/95 backdrop-blur-md rounded-3xl shadow-xl p-4 md:p-6 border-4 border-yellow-300 flex flex-col items-center gap-6">
+
+        <!-- Display Screen / Info Box -->
+        <div id="info-board" class="w-full bg-gradient-to-r from-violet-600 via-indigo-600 to-purple-600 rounded-2xl p-5 text-white text-center shadow-lg transform transition-all duration-300 relative overflow-hidden">
+            <div class="absolute -right-6 -bottom-6 text-8xl opacity-10">⌨️</div>
+            <div id="key-title" class="text-2xl md:text-4xl font-black mb-1 tracking-wide text-yellow-300">
+                กดปุ่มบนแป้นพิมพ์ของคุณได้เลย!
+            </div>
+            <div id="key-desc" class="text-sm md:text-lg font-medium text-pink-100">
+                ฝึกกด 8 ปุ่มสำคัญเพื่อฟังเสียงภาษาอังกฤษสำเนียงแท้และคำอธิบายภาษาไทย
+            </div>
+            <button onclick="repeatVoice()" class="mt-3 bg-yellow-400 hover:bg-yellow-500 text-indigo-950 font-bold px-4 py-1.5 rounded-full text-xs shadow transition transform hover:scale-105 inline-flex items-center gap-1">
+                🔊 ฟังเสียงอีกรอบ
+            </button>
+        </div>
+
+        <!-- Virtual Keyboard Layout Matching Reference -->
+        <div class="w-full overflow-x-auto pb-4 pt-2">
+            <div class="min-w-[700px] bg-slate-900 p-4 rounded-2xl border-4 border-slate-700 shadow-2xl flex flex-col gap-2 items-center">
+                
+                <!-- Number / Symbol Row -->
+                <div class="flex gap-1 justify-center">
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-yellow-400">~</span><span class="text-xs">`</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-yellow-400">!</span><span class="text-sm">1</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-yellow-400">@</span><span class="text-sm">2</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-yellow-400">#</span><span class="text-sm">3</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-yellow-400">$</span><span class="text-sm">4</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-yellow-400">%</span><span class="text-sm">5</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-yellow-400">^</span><span class="text-sm">6</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-yellow-400">&</span><span class="text-sm">7</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-yellow-400">*</span><span class="text-sm">8</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-yellow-400">(</span><span class="text-sm">9</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-yellow-400">)</span><span class="text-sm">0</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-yellow-400">_</span><span class="text-sm">-</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-yellow-400">+</span><span class="text-sm">=</span></button>
+                    
+                    <!-- 1. BACKSPACE -->
+                    <button id="btn-backspace" onclick="triggerKeyAction('Backspace')" class="key-btn bg-pink-700 hover:bg-pink-600 text-white font-bold p-1 rounded-lg text-xs w-20 h-12 flex flex-col justify-center items-center border border-pink-500 cursor-pointer">
+                        <span class="text-xs font-bold text-amber-200">← Backspace</span>
+                    </button>
+                </div>
+
+                <!-- QWERTY Row -->
+                <div class="flex gap-1 justify-center">
+                    <!-- 2. TAB -->
+                    <button id="btn-tab" onclick="triggerKeyAction('Tab')" class="key-btn bg-emerald-700 hover:bg-emerald-600 text-white font-bold p-1 rounded-lg text-xs w-14 h-12 flex flex-col justify-center items-center border border-emerald-500 cursor-pointer">
+                        <span class="text-xs font-bold text-sky-200">Tab ⇄</span>
+                    </button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">ฤ</span><span class="text-base">Q</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">ไ</span><span class="text-base">W</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">ำ</span><span class="text-base">E</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">พ</span><span class="text-base">R</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">ะ</span><span class="text-base">T</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">ั</span><span class="text-base">Y</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">ี</span><span class="text-base">U</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">ร</span><span class="text-base">I</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">น</span><span class="text-base">O</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">ย</span><span class="text-base">P</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">บ</span><span class="text-sm">[</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">ล</span><span class="text-sm">]</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">ฃ</span><span class="text-sm">\</span></button>
+                </div>
+
+                <!-- ASDF Row -->
+                <div class="flex gap-1 justify-center">
+                    <!-- 3. CAPS LOCK -->
+                    <button id="btn-caps" onclick="triggerKeyAction('CapsLock')" class="key-btn bg-rose-700 hover:bg-rose-600 text-white font-bold p-1 rounded-lg text-xs w-16 h-12 flex flex-col justify-center items-center border border-rose-500 cursor-pointer">
+                        <span class="text-xs font-bold text-pink-200">Caps Lock</span>
+                    </button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">ฟ</span><span class="text-base">A</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">ห</span><span class="text-base">S</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">ก</span><span class="text-base">D</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">ด</span><span class="text-base">F</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">เ</span><span class="text-base">G</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">้</span><span class="text-base">H</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">่</span><span class="text-base">J</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">า</span><span class="text-base">K</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">ส</span><span class="text-base">L</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">ว</span><span class="text-base">;</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">ง</span><span class="text-base">'</span></button>
+                    
+                    <!-- 4. ENTER -->
+                    <button id="btn-enter" onclick="triggerKeyAction('Enter')" class="key-btn bg-amber-700 hover:bg-amber-600 text-white font-bold p-1 rounded-lg text-xs w-20 h-12 flex flex-col justify-center items-center border border-amber-500 cursor-pointer">
+                        <span class="text-xs font-bold text-amber-200">↵ Enter</span>
+                    </button>
+                </div>
+
+                <!-- ZXCV Row -->
+                <div class="flex gap-1 justify-center">
+                    <!-- 5. SHIFT -->
+                    <button id="btn-shift" onclick="triggerKeyAction('Shift')" class="key-btn bg-orange-700 hover:bg-orange-600 text-white font-bold p-1 rounded-lg text-xs w-20 h-12 flex flex-col justify-center items-center border border-orange-500 cursor-pointer">
+                        <span class="text-xs font-bold text-pink-200">⇧ Shift</span>
+                    </button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">ผ</span><span class="text-base">Z</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">ป</span><span class="text-base">X</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">แ</span><span class="text-base">C</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">อ</span><span class="text-base">V</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">ิ</span><span class="text-base">B</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">ื</span><span class="text-base">N</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">ท</span><span class="text-base">M</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">ม</span><span class="text-sm">,</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">ใ</span><span class="text-sm">.</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-11 h-12 flex flex-col justify-between items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-[10px] text-emerald-400">ฝ</span><span class="text-sm">/</span></button>
+                    <button class="key-btn bg-slate-800 text-white font-bold p-1 rounded-lg text-xs w-28 h-12 flex flex-col justify-center items-center border border-slate-700 pointer-events-none opacity-60"><span class="text-xs font-bold text-pink-300">⇧ Shift</span></button>
+                </div>
+
+                <!-- Bottom Control Row -->
+                <div class="flex gap-1 justify-center mt-1">
+                    <button class="key-btn bg-slate-800 text-white font-bold p-2 rounded-lg text-xs w-14 h-11 flex items-center justify-center border border-slate-700 pointer-events-none opacity-60"><span class="text-xs text-yellow-300">Ctrl</span></button>
+                    
+                    <!-- 6. WINDOWS -->
+                    <button id="btn-windows" onclick="triggerKeyAction('Meta')" class="key-btn bg-indigo-700 hover:bg-indigo-600 text-white font-bold p-2 rounded-lg text-xs w-12 h-11 flex items-center justify-center border border-indigo-500 cursor-pointer">
+                        <span class="text-base">🪟</span>
+                    </button>
+                    
+                    <button class="key-btn bg-slate-800 text-white font-bold p-2 rounded-lg text-xs w-14 h-11 flex items-center justify-center border border-slate-700 pointer-events-none opacity-60"><span class="text-xs text-yellow-300">Alt</span></button>
+                    
+                    <!-- 7. SPACE BAR -->
+                    <button id="btn-space" onclick="triggerKeyAction(' ')" class="key-btn bg-sky-700 hover:bg-sky-600 text-white font-bold p-2 rounded-lg text-xs w-72 h-11 flex items-center justify-center border border-sky-500 cursor-pointer">
+                        <span class="text-xs text-sky-200 font-bold">Space Bar (เคาะเว้นวรรค)</span>
+                    </button>
+                    
+                    <button class="key-btn bg-slate-800 text-white font-bold p-2 rounded-lg text-xs w-14 h-11 flex items-center justify-center border border-slate-700 pointer-events-none opacity-60"><span class="text-xs text-yellow-300">Alt</span></button>
+                    
+                    <!-- 8. DELETE -->
+                    <button id="btn-delete" onclick="triggerKeyAction('Delete')" class="key-btn bg-purple-700 hover:bg-purple-600 text-white font-bold p-2 rounded-lg text-xs w-16 h-11 flex items-center justify-center border border-purple-500 cursor-pointer">
+                        <span class="text-xs text-purple-200 font-bold">Delete</span>
+                    </button>
+                    
+                    <button class="key-btn bg-slate-800 text-white font-bold p-2 rounded-lg text-xs w-14 h-11 flex items-center justify-center border border-slate-700 pointer-events-none opacity-60"><span class="text-xs text-yellow-300">Ctrl</span></button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 8 Key Reference Cards -->
+        <div class="w-full mt-2">
+            <h2 class="text-base font-bold text-indigo-800 mb-2 text-center">⭐ 8 ปุ่มสำคัญที่รองรับการฝึกกด ⭐</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-xs">
+                <div class="bg-amber-50 border-2 border-amber-300 rounded-xl p-2 font-bold text-amber-900">Enter : ขึ้นบรรทัดใหม่</div>
+                <div class="bg-pink-50 border-2 border-pink-300 rounded-xl p-2 font-bold text-pink-900">Backspace : ลบซ้าย</div>
+                <div class="bg-orange-50 border-2 border-orange-300 rounded-xl p-2 font-bold text-orange-900">Shift : พิมพ์ตัวบน</div>
+                <div class="bg-rose-50 border-2 border-rose-300 rounded-xl p-2 font-bold text-rose-900">Caps Lock : พิมพ์ใหญ่</div>
+                <div class="bg-sky-50 border-2 border-sky-300 rounded-xl p-2 font-bold text-sky-900">Space Bar : เาะเว้นวรรค</div>
+                <div class="bg-emerald-50 border-2 border-emerald-300 rounded-xl p-2 font-bold text-emerald-900">Tab : เว้นระยะกว้าง</div>
+                <div class="bg-purple-50 border-2 border-purple-300 rounded-xl p-2 font-bold text-purple-900">Delete : ลบขวา</div>
+                <div class="bg-indigo-50 border-2 border-indigo-300 rounded-xl p-2 font-bold text-indigo-900">Windows : เปิดเมนู</div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="mt-4 text-center text-xs md:text-sm text-indigo-900 font-semibold">
+        ✨ สื่อการสอนวิชาคอมพิวเตอร์ โดย <span class="text-pink-600 font-bold">ครูหทัยรัตน์ มณฑาทัศน์</span> โรงเรียนอนุบาลกาญจนบุรี 🎨
+    </footer>
+
+    <!-- JavaScript Interactive Key Listener & Native Dual-Voice -->
+    <script>
+        let currentEngName = "";
+        let currentThaiDesc = "";
+
+        // Map key event or clicks to data
+        const keyInfoMap = {
+            'Enter': { name: 'Enter', desc: 'ใช้สำหรับขึ้นบรรทัดใหม่หรือยืนยันคำสั่ง', btnId: 'btn-enter' },
+            'Backspace': { name: 'Backspace', desc: 'ใช้ลบตัวอักษรทางด้านซ้าย', btnId: 'btn-backspace' },
+            'Shift': { name: 'Shift', desc: 'ใช้กดร่วมกับปุ่มอื่นเพื่อพิมพ์ตัวอักษรตัวบน', btnId: 'btn-shift' },
+            'CapsLock': { name: 'Caps Lock', desc: 'ใช้สำหรับพิมพ์ตัวอักษรภาษาอังกฤษตัวใหญ่ทั้งหมด', btnId: 'btn-caps' },
+            ' ': { name: 'Space Bar', desc: 'เป็นปุ่มยาวที่สุด ใช้สำหรับเว้นวรรคระหว่างคำ', btnId: 'btn-space' },
+            'Tab': { name: 'Tab', desc: 'ใช้เว้นระยะห่างช่วงกว้างหรือย่อหน้า', btnId: 'btn-tab' },
+            'Delete': { name: 'Delete', desc: 'ใช้ลบตัวอักษรทางด้านขวา', btnId: 'btn-delete' },
+            'Meta': { name: 'Windows', desc: 'ใช้เปิดเมนูหลักของระบบคอมพิวเตอร์', btnId: 'btn-windows' }
+        };
+
+        function triggerKeyAction(keyKey) {
+            const data = keyInfoMap[keyKey];
+            if (!data) return;
+
+            currentEngName = data.name;
+            currentThaiDesc = data.desc;
+
+            // Update UI Screen
+            document.getElementById('key-title').innerText = `ปุ่ม: ${data.name}`;
+            document.getElementById('key-desc').innerText = data.desc;
+
+            // Highlight visual key
+            document.querySelectorAll('.key-btn').forEach(b => b.classList.remove('ring-4', 'ring-yellow-300', 'bg-sky-400'));
+            const targetBtn = document.getElementById(data.btnId);
+            if (targetBtn) {
+                targetBtn.classList.add('ring-4', 'ring-yellow-300');
+                setTimeout(() => targetBtn.classList.remove('ring-4', 'ring-yellow-300'), 500);
+            }
+
+            // Play Bilingual Audio: Native English Accent + Thai Description
+            playBilingualSpeech(data.name, data.desc);
+        }
+
+        // Listen to actual physical keyboard press
+        window.addEventListener('keydown', function(event) {
+            let key = event.key;
+            if (key === ' ') key = ' ';
+            if (event.code === 'MetaLeft' || event.code === 'MetaRight') key = 'Meta';
+            
+            if (keyInfoMap[key]) {
+                event.preventDefault();
+                triggerKeyAction(key);
+            }
+        });
+
+        function repeatVoice() {
+            if (currentEngName) {
+                playBilingualSpeech(currentEngName, currentThaiDesc);
+            } else {
+                playIntro();
+            }
+        }
+
+        function playIntro() {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const introUtterance = new SpeechSynthesisUtterance("ยินดีต้อนรับสู่บทเรียนแป้นพิมพ์ โดยครูหทัยรัตน์ มณฑาทัศน์ โรงเรียนอนุบาลกาญจนบุรีครับ ลองกดปุ่มบนคีย์บอร์ดของคุณได้เลย!");
+                introUtterance.lang = 'th-TH';
+                introUtterance.rate = 0.9;
+                introUtterance.pitch = 1.2;
+                window.speechSynthesis.speak(introUtterance);
+            }
+        }
+
+        function playBilingualSpeech(engText, thaiDesc) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+
+                // 1. Speak English key name with Native English Accent
+                const engUtterance = new SpeechSynthesisUtterance(engText);
+                engUtterance.lang = 'en-US';
+                engUtterance.rate = 0.85;
+                engUtterance.pitch = 1.0;
+
+                // 2. Speak Thai explanation after English finishes
+                engUtterance.onend = function() {
+                    const thaiUtterance = new SpeechSynthesisUtterance(thaiDesc);
+                    thaiUtterance.lang = 'th-TH';
+                    thaiUtterance.rate = 0.9;
+                    thaiUtterance.pitch = 1.2;
+                    window.speechSynthesis.speak(thaiUtterance);
+                };
+
+                window.speechSynthesis.speak(engUtterance);
+            }
+        }
+
+        window.onload = function() {
+            setTimeout(() => {
+                playIntro();
+            }, 1000);
+        };
+    </script>
+</body>
+</html>
